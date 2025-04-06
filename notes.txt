@@ -1,0 +1,8 @@
+PS4 Controller → Python Program → Companion Computer (Raspberry Pi) → MAVSDK → PX4 Flight Controller → Drone Motors
+
+get UBEC for rpi 5
+
+LiPo Battery (big voltage)
+ ├─> Flight Controller (Holybro Durandal or Holybro Pixhawk 6C)
+ ├─> ESCs + Motors
+ └─> UBEC 5V → Raspberry Pi 5 (via GPIO or USB-C breakout)
