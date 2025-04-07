@@ -9,7 +9,7 @@ joystick.init()
 
 loopnum = 0
 
-def canvasUpdates():
+def updates():
     global loopnum
     pygame.event.pump()
 
@@ -17,12 +17,6 @@ def canvasUpdates():
     pitch = -joystick.get_axis(3)
     roll = joystick.get_axis(2)
     yaw = joystick.get_axis(0)
-
-    # Scaling for visualization
-    px = roll * 100
-    py = pitch * 100
-
-    canvas.coords(drone, 200 + px - 10, 200 + py - 10, 200 + px + 10, 200 + py + 10)
 
     loopnum += 1
 
@@ -32,18 +26,13 @@ def canvasUpdates():
     yawLabel.config(text=f"Yaw: {round(yaw,5)}")
     num.config(text=loopnum)
 
-    root.after(100, canvasUpdates)
+    root.after(100, updates)
 
 
 if __name__ == '__main__':
     root = tk.Tk()
     root.geometry("800x400")
     root.title('Inputs')
-
-    canvas = tk.Canvas(root, width=200, height=200, bg="black")
-    canvas.pack(fill=tk.Y)
-
-    drone = canvas.create_rectangle(190, 190, 210, 210, fill="green")
 
     thrLabel = tk.Label(text="Throttle")
     thrLabel.pack(fill=tk.X)
@@ -56,6 +45,5 @@ if __name__ == '__main__':
     num = tk.Label(text=loopnum)
     num.pack(fill=tk.X)
 
-    #updates()
-    canvasUpdates()
+    updates()
     root.mainloop()
